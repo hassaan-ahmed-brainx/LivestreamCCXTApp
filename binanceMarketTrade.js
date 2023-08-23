@@ -1,10 +1,12 @@
 const ccxt = require('ccxt').pro;
-const {symbol,amount,side, apiKey, secret} = require('./constants/constants')
+require('dotenv').config(); 
+
+const {symbol,amount,side} = require('./constants/constants')
 
 async function tradeUSDTtoUSDC() {
   const Binance = new ccxt.binance({
-    apiKey: apiKey,
-    secret: secret,
+    apiKey: process.env.API_KEY,
+    secret: process.env.API_SECRET,
     enableRateLimit: true,
     options: {
       defaultType: 'future',

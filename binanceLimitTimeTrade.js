@@ -1,10 +1,12 @@
 const ccxt = require('ccxt').pro;
-const {symbol,amount,side,price, apiKey, secret, timeLimit} = require('./constants/constants')
+const {symbol,amount,side,price, timeLimit} = require('./constants/constants')
+require('dotenv').config(); 
+
 
 async function tradeUSDTtoUSDC() {
   const Binance = new ccxt.binance({
-    apiKey: apiKey,
-    secret: secret,
+    apiKey: process.env.API_KEY,
+    secret: process.env.API_SECRET,
     enableRateLimit: true,
     options: {
       defaultType: 'future',
@@ -22,17 +24,12 @@ async function tradeUSDTtoUSDC() {
     console.log('USDT balance before Trade is: ', usdtBalance);
     console.log('USDC balance before Trade is: ', usdcBalance);
   
-    console.log('Placing limit order...');
-
     const order = await Binance.createLimitOrder(
       symbol,
       side,
       amount,
       price
     );
-
-    console.log('Limit Order Result:', order);
-
 
     const deadlineTimestamp = Date.now() + timeLimit;
     let orderStatus; 
