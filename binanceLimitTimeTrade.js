@@ -1,6 +1,6 @@
+require('dotenv').config(); 
 const ccxt = require('ccxt').pro;
 const {symbol,amount,side,price, timeLimit} = require('./constants/constants')
-require('dotenv').config(); 
 
 
 async function tradeUSDTtoUSDC() {

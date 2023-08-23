@@ -1,5 +1,5 @@
-const ccxt = require('ccxt').pro;
 require('dotenv').config(); 
+const ccxt = require('ccxt').pro;
 
 const {symbol,amount,side} = require('./constants/constants')
 
